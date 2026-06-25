@@ -22,7 +22,7 @@ preview_bucket_name = "files-sharing-temp-dev"
 [[d1_databases]]
 binding = "DB"
 database_name = "files-sharing"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "7469905c-eee0-49f0-bba4-952bd435300d"
 migrations_dir = "migrations"
 
 # Optional KV cache. D1 remains the source of truth for permission checks.

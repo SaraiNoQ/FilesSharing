@@ -1,20 +1,27 @@
 {
-  "Rules": [
+  "rules": [
     {
-      "ID": "delete-temp-objects-after-30-days",
-      "Status": "Enabled",
-      "Filter": {
-        "Prefix": "tmp/"
+      "id": "delete-temp-objects-after-30-days",
+      "enabled": true,
+      "conditions": {
+        "prefix": "tmp/"
       },
-      "Expiration": {
-        "Days": 30
+      "deleteObjectsTransition": {
+        "condition": {
+          "type": "Age",
+          "maxAge": 2592000
+        }
       }
     },
     {
-      "ID": "abort-incomplete-multipart-after-1-day",
-      "Status": "Enabled",
-      "AbortIncompleteMultipartUpload": {
-        "DaysAfterInitiation": 1
+      "id": "abort-incomplete-multipart-after-1-day",
+      "enabled": true,
+      "conditions": {},
+      "abortMultipartUploadsTransition": {
+        "condition": {
+          "type": "Age",
+          "maxAge": 86400
+        }
       }
     }
   ]
