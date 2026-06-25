@@ -1,0 +1,24 @@
+{
+  "name": "files-sharing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lightweight temporary file sharing service on Cloudflare Workers, R2, and D1.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply files-sharing --local",
+    "db:migrate:remote": "wrangler d1 migrations apply files-sharing --remote",
+    "r2:lifecycle:set": "wrangler r2 bucket lifecycle set files-sharing-temp --file lifecycle/r2-lifecycle.json",
+    "upload": "node scripts/upload.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "latest",
+    "typescript": "latest",
+    "wrangler": "latest"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
