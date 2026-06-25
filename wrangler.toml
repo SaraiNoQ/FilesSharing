@@ -1,0 +1,34 @@
+name = "files-sharing"
+main = "src/index.ts"
+compatibility_date = "2026-06-25"
+workers_dev = true
+
+# For production custom domain, disable workers_dev and uncomment this block.
+# workers_dev = false
+# [route]
+# pattern = "files.example.com/*"
+# zone_name = "example.com"
+
+[vars]
+DEFAULT_TTL_SECONDS = "86400"
+MAX_FILE_BYTES = "52428800"
+SHARE_BASE_URL = ""
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "files-sharing-temp"
+preview_bucket_name = "files-sharing-temp-dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "files-sharing"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# Optional KV cache. D1 remains the source of truth for permission checks.
+# [[kv_namespaces]]
+# binding = "SHARE_CACHE"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[triggers]
+crons = ["*/30 * * * *"]

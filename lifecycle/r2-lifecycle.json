@@ -1,0 +1,21 @@
+{
+  "Rules": [
+    {
+      "ID": "delete-temp-objects-after-30-days",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "tmp/"
+      },
+      "Expiration": {
+        "Days": 30
+      }
+    },
+    {
+      "ID": "abort-incomplete-multipart-after-1-day",
+      "Status": "Enabled",
+      "AbortIncompleteMultipartUpload": {
+        "DaysAfterInitiation": 1
+      }
+    }
+  ]
+}
